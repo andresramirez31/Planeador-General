@@ -25,6 +25,25 @@ repositories {
     google()
 }
 
+sourceSets {
+    main {
+        java {
+            srcDirs = ['backend/src/main/java']
+        }
+        resources {
+            srcDirs = ['backend/src/main/resources']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['backend/src/test/java']
+        }
+        resources {
+            srcDirs = ['backend/src/test/resources']
+        }
+    }
+}
+
 ext {
     serenityVersion = '4.1.0'
     serenityCucumberVersion = '4.1.0'
@@ -41,6 +60,8 @@ dependencies {
     implementation "net.serenity-bdd:serenity-cucumber:$serenityCucumberVersion"
     implementation "net.serenity-bdd:serenity-screenplay-webdriver:$serenityWebVersion"
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.h2database:h2'
 
     //Test compilation
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

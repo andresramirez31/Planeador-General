@@ -1,12 +1,36 @@
 package co.com.planeador.planeador.models.calendar;
 
-public class month {
-    private int idMonthDate;
-    private day[] Month;
+import javax.persistence.*;
+import java.time.Year;
+import java.util.List;
 
-    public month(int idMonthDate, day[] month) {
+@Entity
+@Table(name = "calendarMonth")
+public class month {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idMonthDate;
+
+    @OneToMany(mappedBy = "calendarDay")
+    @OrderColumn(name = "month_order")
+    private List<day> calendarMonth;
+
+    @ManyToOne
+    private year calendarYear;
+
+    public month(int idMonthDate, List<day> calendarMonth, year calendarYear) {
         this.idMonthDate = idMonthDate;
-        Month = month;
+        this.calendarMonth = calendarMonth;
+        this.calendarYear = calendarYear;
+    }
+
+    public year getCalendarYear() {
+        return this.calendarYear;
+    }
+
+    public void setCalendarYear(final year calendarYear) {
+        this.calendarYear = calendarYear;
     }
 
     public month(int idMonthDate) {
@@ -21,11 +45,11 @@ public class month {
         this.idMonthDate = idMonthDate;
     }
 
-    public day[] getMonth() {
-        return Month;
+    public List<day> getCalendarMonth() {
+        return calendarMonth;
     }
 
-    public void setMonth(day[] month) {
-        Month = month;
+    public void setCalendarMonth(List<day> calendarMonth) {
+        this.calendarMonth = calendarMonth;
     }
 }

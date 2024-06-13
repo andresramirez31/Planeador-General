@@ -1,15 +1,23 @@
 package co.com.planeador.planeador.models.calendar;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.*;
 
+@Entity
 public class event{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String eventName;
-    private LocalTime startTime;
-    private LocalTime endTime;
-    private day chosenDay;
+    private int startTime;
+    private int endTime;
+    private int chosenDay;
 
-    public event(int id, String eventName, LocalTime startTime, LocalTime endTime, day chosenDay) {
+
+    public event(int id, String eventName, int startTime, int endTime, int chosenDay) {
         this.id = id;
         this.eventName = eventName;
         this.startTime = startTime;
@@ -22,11 +30,11 @@ public class event{
         this.id = id;
     }
 
-    public day getChosenDay() {
+    public int getChosenDay() {
         return chosenDay;
     }
 
-    public void setChosenDay(day chosenDay) {
+    public void setChosenDay(int chosenDay) {
         this.chosenDay = chosenDay;
     }
 
@@ -46,19 +54,19 @@ public class event{
         this.eventName = eventName;
     }
 
-    public LocalTime getStartTime() {
+    public int getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalTime startTime) {
+    public void setStartTime(int startTime) {
         this.startTime = startTime;
     }
 
-    public LocalTime getEndTime() {
+    public int getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalTime endTime) {
+    public void setEndTime(int endTime) {
         this.endTime = endTime;
     }
 }
