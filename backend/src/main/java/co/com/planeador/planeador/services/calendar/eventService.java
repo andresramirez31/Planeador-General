@@ -16,4 +16,16 @@ public class eventService {
     public List<event> getAllEvents() {
         return eventrepository.findAll();
     }
+
+    public event saveEvent(event newEvent){
+        return eventrepository.save(newEvent);
+    }
+
+    public event getEventById(int id){
+        return eventrepository.findById(id).orElse(null);
+    }
+
+    public List<event> getEventsByChosenDay(int chosenDay) {
+        return eventrepository.findByChosenDay(chosenDay);
+    }
 }

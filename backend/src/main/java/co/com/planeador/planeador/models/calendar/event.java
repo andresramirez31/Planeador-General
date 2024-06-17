@@ -16,6 +16,8 @@ public class event{
     private int endTime;
     private int chosenDay;
 
+    public event() {
+    }
 
     public event(int id, String eventName, int startTime, int endTime, int chosenDay) {
         this.id = id;
